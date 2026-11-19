@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useApp } from "../AppContext.js";
 import BrandWaves from "../components/BrandWaves.jsx";
-import { Band, Button, Eyebrow, Note, cx, fieldInput, fieldLabel } from "../components/ui.jsx";
+import { Band, Button, Eyebrow, cx, fieldInput, fieldLabel } from "../components/ui.jsx";
 
 export const SECTORS = ["عطور وتجميل", "أزياء وإكسسوارات", "أغذية ومشروبات", "ضيافة وسياحة", "تجزئة", "تقنية", "فعاليات وترفيه", "أخرى"];
 
@@ -132,9 +132,6 @@ export default function Auth({ next }) {
               {isSignup ? "تسجيل الدخول" : "أنشئ حسابًا"}
             </Button>
           </p>
-          <Note className="mt-5">
-            ✦ نموذج تجريبي: الحساب يُحفظ في متصفحك فقط، وكلمة المرور لا تُحفظ ولا يُتحقق منها. الدخول الفعلي يحتاج ربط المنصة بخادم.
-          </Note>
         </div>
       </div>
     </Band>

@@ -7,7 +7,7 @@ const SHORT = { home: "الرئيسية", ideas: "الأفكار", checker: "ا�
 
 /** Floating nav at the bottom of the screen, shown only while neither the header nor the footer is in view. */
 export default function BottomNav() {
-  const { page } = useApp();
+  const { page, signedIn } = useApp();
   const [headerVisible, setHeaderVisible] = useState(true);
   const [footerVisible, setFooterVisible] = useState(false);
 
@@ -26,6 +26,10 @@ export default function BottomNav() {
   }, []);
 
   const show = !headerVisible && !footerVisible;
+
+  // Form pages (account, sign-in, and the sign-in screen that stands in for a tool) keep the screen clear for typing.
+  const onForm = ["account", "login", "signup"].includes(page) || (!signedIn && ["ideas", "checker", "calendar"].includes(page));
+  if (onForm) return null;
 
   return (
     <nav

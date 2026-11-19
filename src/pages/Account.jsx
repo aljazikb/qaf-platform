@@ -85,10 +85,13 @@ export default function Account() {
               <span className="grid size-16 place-items-center rounded-brand-sm bg-navy text-2xl font-bold text-white">
                 {account?.name?.trim()?.[0] || "؟"}
               </span>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <strong className="block truncate text-lg text-navy">{account?.name}</strong>
-                <span className="block truncate text-sm text-muted" dir="ltr">{account?.email}</span>
+                <span className="block truncate text-right text-sm text-muted" dir="ltr">{account?.email}</span>
               </div>
+              <Button variant="ghost" className="min-h-9 shrink-0 px-3 text-xs text-terracotta hover:border-terracotta hover:text-terracotta" onClick={signOut}>
+                تسجيل الخروج
+              </Button>
             </div>
             <div className="grid grid-cols-2 gap-3">
               {[
@@ -110,7 +113,6 @@ export default function Account() {
               <Eyebrow className="mb-2">كيف تظهر علامتك في الأدوات</Eyebrow>
               <BrandBar brand={brand} status="الهوية الحالية" className="mb-0" />
             </div>
-            <Button variant="ghost" className="justify-self-start" onClick={signOut}>تسجيل الخروج</Button>
           </aside>
 
           {/* Company profile */}
