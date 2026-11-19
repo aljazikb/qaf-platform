@@ -34,7 +34,7 @@ export default function Footer() {
         <div className="relative h-36 sm:h-44">
           <BrandWaves className="absolute inset-0 h-full w-full" />
           <div className={`${column} relative h-full`}>
-            <img src="/assets/images/qaf-palm.png" alt="" className="pointer-events-none absolute end-[7%] bottom-[56%] h-24 w-auto sm:h-32" />
+            <img src="assets/images/qaf-palm.png" alt="" className="pointer-events-none absolute end-[7%] bottom-[56%] h-24 w-auto sm:h-32" />
             <p className="absolute start-[clamp(16px,4vw,32px)] bottom-2.5 text-xs text-white">
               مشروع قاف (QAf) © 2026 · معسكر الابتكار الإعلامي
             </p>

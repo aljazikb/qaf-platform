@@ -6,10 +6,10 @@ import { Band, Button, HeroTitle, PanelHead, WaveDivider, cx } from "../componen
 
 // Official logos (SVG) live in public/assets/images/partners/.
 const PARTNERS = [
-  { name: "الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)", logo: "/assets/images/partners/sdaia.svg", accent: "from-green to-sky" },
-  { name: "مركز المعلومات الوطني", logo: "/assets/images/partners/nic.svg", accent: "from-green to-navy" },
-  { name: "مكتب إدارة البيانات الوطنية", logo: "/assets/images/partners/ndmo.svg", accent: "from-navy to-green" },
-  { name: "وزارة الثقافة", logo: "/assets/images/partners/moc.svg", accent: "from-terracotta to-gold" },
+  { name: "الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)", logo: "assets/images/partners/sdaia.svg", accent: "from-green to-sky" },
+  { name: "مركز المعلومات الوطني", logo: "assets/images/partners/nic.svg", accent: "from-green to-navy" },
+  { name: "مكتب إدارة البيانات الوطنية", logo: "assets/images/partners/ndmo.svg", accent: "from-navy to-green" },
+  { name: "وزارة الثقافة", logo: "assets/images/partners/moc.svg", accent: "from-terracotta to-gold" },
 ];
 
 // Logos rest in muted grayscale and bloom into full colour on hover, with a brand-tinted accent line.
@@ -40,7 +40,7 @@ export default function Home() {
         style={{
           // Riyadh skyline; a cream wash over the sky keeps the headline readable while the city shows below
           backgroundImage:
-            "radial-gradient(ellipse 60% 70% at 50% 45%, rgba(250,246,238,.92) 0%, rgba(250,246,238,.7) 55%, rgba(250,246,238,0) 100%), url(/assets/images/qaf-hero-riyadh-light.jpg)",
+            "radial-gradient(ellipse 60% 70% at 50% 45%, rgba(250,246,238,.92) 0%, rgba(250,246,238,.7) 55%, rgba(250,246,238,0) 100%), url(assets/images/qaf-hero-riyadh-light.jpg)",
         }}
         inner="grid w-full justify-items-center pt-[calc(88px+clamp(40px,6vw,72px))] pb-[clamp(72px,8vw,110px)] text-center"
         edge={<WaveDivider from="transparent" to="#ffffff" className="absolute inset-x-0 bottom-0" />}

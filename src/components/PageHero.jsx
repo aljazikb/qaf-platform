@@ -28,7 +28,7 @@ export default function PageHero({ piece, eyebrow, title, accent, lead, next = "
       </div>
       <div aria-hidden="true" className="relative hidden justify-self-center md:block">
         <img
-          src={`/assets/images/logo-parts/crop/${piece}.png`}
+          src={`assets/images/logo-parts/crop/${piece}.png`}
           alt=""
           className="relative w-[clamp(150px,16vw,220px)] animate-piece-float drop-shadow-[0_24px_30px_rgba(18,26,47,.15)]"
         />

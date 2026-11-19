@@ -17,7 +17,7 @@ const linkClass = (active) =>
 
 /** The full-colour logo (transparent PNG). */
 export function LogoTile({ className }) {
-  return <img src="/assets/images/qaf-logo.png" alt="" className={cx("block h-12 w-auto", className)} />;
+  return <img src="assets/images/qaf-logo.png" alt="" className={cx("block h-12 w-auto", className)} />;
 }
 
 export default function Header() {
