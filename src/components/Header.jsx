@@ -21,7 +21,8 @@ export function LogoTile({ className }) {
 }
 
 export default function Header() {
-  const { page } = useApp();
+  const { page, signedIn, account } = useApp();
+  const initial = account?.name?.trim()?.[0] || "؟";
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
 
@@ -63,9 +64,29 @@ export default function Header() {
               ))}
             </ul>
           </nav>
-          <span className="hidden rounded-brand-xs bg-mint-soft px-3.5 py-2 text-xs font-bold text-progress-fg lg:block">
-            الاستدامة الثقافية طوال العام
-          </span>
+          <div className="hidden shrink-0 items-center gap-2 md:flex">
+            {signedIn ? (
+              <a
+                href="#/account"
+                aria-current={page === "account" ? "page" : undefined}
+                className={cx(
+                  "flex items-center gap-2.5 rounded-brand-xs border py-1.5 ps-1.5 pe-3.5 text-sm font-bold transition-colors",
+                  page === "account" ? "border-green bg-mint text-green-dark" : "border-line text-navy hover:border-green hover:bg-mint-soft"
+                )}
+              >
+                <span className="grid size-8 place-items-center rounded-brand-xs bg-navy text-sm text-white">{initial}</span>
+                <span className="hidden max-w-[10ch] truncate lg:inline">{account?.name}</span>
+                <span className="lg:hidden">حسابي</span>
+              </a>
+            ) : (
+              <>
+                <a href="#/login" className={linkClass(page === "login")}>تسجيل الدخول</a>
+                <a href="#/signup" className="rounded-brand-xs bg-green px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-green-dark">
+                  إنشاء حساب
+                </a>
+              </>
+            )}
+          </div>
           <button
             ref={buttonRef}
             type="button"
@@ -86,6 +107,18 @@ export default function Header() {
               {label}
             </a>
           ))}
+          <div className="mt-2 border-t border-line pt-2">
+            {signedIn ? (
+              <a href="#/account" aria-current={page === "account" ? "page" : undefined} className={cx(linkClass(page === "account"), "py-3")}>
+                حسابي · {account?.name}
+              </a>
+            ) : (
+              <>
+                <a href="#/login" className={cx(linkClass(page === "login"), "py-3")}>تسجيل الدخول</a>
+                <a href="#/signup" className={cx(linkClass(page === "signup"), "py-3")}>إنشاء حساب</a>
+              </>
+            )}
+          </div>
         </nav>
       </div>
     </header>

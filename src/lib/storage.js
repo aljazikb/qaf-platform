@@ -30,6 +30,9 @@ export const KEYS = {
   projects: "qaf_projects_v2",
   calendarPending: "qaf_calendar_pending_v1",
   calendarEvents: "qaf_calendar_events_v1",
+  // Demo accounts live in this browser only; there is no server and passwords are never stored.
+  account: "qaf_account_v1",
+  session: "qaf_session_v1",
 };
 
 export const DEFAULT_BRAND = {

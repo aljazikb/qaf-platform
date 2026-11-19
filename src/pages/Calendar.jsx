@@ -4,7 +4,6 @@ import { KEYS, read, remove, write } from "../lib/storage.js";
 import { Band, Button, Eyebrow, Panel, PanelHead, WaveDivider, cx } from "../components/ui.jsx";
 import PageHero from "../components/PageHero.jsx";
 
-const USER_NAME = "نورة";
 const STATUS = {
   pending: { label: "قيد الانتظار", chip: "⏳ قيد الانتظار", tone: "bg-pending text-pending-fg", dot: "bg-terracotta" },
   progress: { label: "جاري التفعيل", chip: "🔄 جاري التفعيل", tone: "bg-progress text-progress-fg", dot: "bg-green" },
@@ -96,7 +95,7 @@ function UpcomingCard({ event }) {
 }
 
 export default function Calendar() {
-  const { toast } = useApp();
+  const { toast, account } = useApp();
   const [events, setEvents] = useState(() => [
     ...SEED_EVENTS,
     ...read(KEYS.calendarEvents, []).map((e) => ({ ...e, date: new Date(e.date) })),
@@ -111,7 +110,7 @@ export default function Calendar() {
   const [statuses, setStatuses] = useState(() => new Set(Object.keys(STATUS)));
   const [filter, setFilter] = useState("all");
   const [messages, setMessages] = useState([
-    { id: 0, who: "bot", text: `أهلاً ${USER_NAME}! بناءً على هوية علامتك، أقترح بدء التحضير لموسم الطائف قبل 3 أسابيع لضمان التميز.` },
+    { id: 0, who: "bot", text: `أهلاً ${account?.name || ""}! بناءً على هوية علامتك، أقترح بدء التحضير لموسم الطائف قبل 3 أسابيع لضمان التميز.` },
   ]);
   const [input, setInput] = useState("");
   const logRef = useRef(null);
