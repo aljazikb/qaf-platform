@@ -9,8 +9,8 @@ export const LINKS = [
   ["calendar", "التقويم الذكي"],
 ];
 
-/** The tools need an account; visitors who aren't signed in get no page links (the logo already goes home). */
-export const visibleLinks = (signedIn) => (signedIn ? LINKS : []);
+/** Header links: the logo already goes home, and the tools need an account, so visitors who aren't signed in get none. */
+export const visibleLinks = (signedIn) => (signedIn ? LINKS.slice(1) : []);
 
 const linkClass = (active) =>
   cx(
