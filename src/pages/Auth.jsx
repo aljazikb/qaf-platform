@@ -67,14 +67,9 @@ export default function Auth({ next }) {
         {/* Brand side: logo and tagline centred */}
         <div className="hidden min-h-[560px] flex-col items-center justify-center gap-8 border-s border-line bg-white p-10 text-center text-navy md:flex">
           <img src="assets/images/qaf-logo.svg" alt="" className="w-40 animate-piece-float" />
-          <div>
-            <p className="text-[clamp(28px,3vw,38px)] leading-[1.3] font-bold">
-              هويتان، وبينهما <span className="text-terracotta">قاف</span>.
-            </p>
-            <p className="mx-auto mt-3 max-w-[34ch] leading-[1.9] text-muted">
-              أضف هوية علامتك مرة وحدة، واكتشف ما يجمعها بالثقافة السعودية في كل حملة.
-            </p>
-          </div>
+          <p className="text-[clamp(28px,3vw,38px)] leading-[1.3] font-bold">
+            هويتان، وبينهما <span className="text-terracotta">قاف</span>.
+          </p>
         </div>
 
         {/* Form side */}
