@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useApp } from "../AppContext.js";
-import { Band, Button, Eyebrow, cx, fieldInput, fieldLabel } from "../components/ui.jsx";
+import { Band, Button, Eyebrow, Select, cx, fieldInput, fieldLabel } from "../components/ui.jsx";
 
 export const SECTORS = ["عطور وتجميل", "أزياء وإكسسوارات", "أغذية ومشروبات", "ضيافة وسياحة", "تجزئة", "تقنية", "فعاليات وترفيه", "أخرى"];
 
@@ -63,7 +63,7 @@ export default function Auth({ next }) {
 
   return (
     <Band className="-mt-[88px] bg-[#fbf6ec]" inner="grid min-h-svh place-items-center pt-[calc(88px+32px)] pb-[clamp(72px,9vw,112px)]">
-      <div className="grid w-full max-w-[1040px] overflow-hidden rounded-brand-sm border border-line bg-white shadow-card sm:rounded-brand md:grid-cols-[.9fr_1.1fr]">
+      <div className="grid w-full max-w-[1040px] rounded-brand-sm border border-line bg-white shadow-card sm:rounded-brand md:grid-cols-[.9fr_1.1fr]">
         {/* Brand side: logo and tagline centred */}
         <div className="hidden min-h-[560px] flex-col items-center justify-center gap-8 border-s border-line bg-white p-10 text-center text-navy md:flex">
           <img src="assets/images/qaf-logo.svg" alt="" className="w-40" />
@@ -99,14 +99,7 @@ export default function Auth({ next }) {
             {isSignup && (
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="اسم الشركة أو العلامة" required maxLength={80} autoComplete="organization" value={form.company} onChange={set("company")} />
-                <label className={fieldLabel}>
-                  القطاع
-                  <select className={cx(fieldInput, "min-h-12")} value={form.sector} onChange={set("sector")}>
-                    {SECTORS.map((s) => (
-                      <option key={s}>{s}</option>
-                    ))}
-                  </select>
-                </label>
+                <Select label="القطاع" options={SECTORS} value={form.sector} onChange={(sector) => setForm({ ...form, sector })} className="min-h-12" />
               </div>
             )}
             {error && (

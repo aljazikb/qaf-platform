@@ -1,3 +1,4 @@
+import { useEffect, useId, useRef, useState } from "react";
 import { extendTailwindMerge } from "tailwind-merge";
 import BrandWaves from "./BrandWaves.jsx";
 
@@ -117,6 +118,116 @@ export function Spinner() {
 export const fieldLabel = "flex flex-col gap-1.5 text-[13px] font-bold text-navy";
 export const fieldInput =
   "w-full min-h-11 rounded-brand-xs border border-line bg-white px-3 py-2.5 text-sm font-normal text-ink transition focus:border-green focus:ring-3 focus:ring-green/20 focus:outline-none";
+
+/**
+ * Dropdown in the site's style (the native <select> list can't be styled).
+ * Keyboard: arrows/Home/End move, Enter/Space pick, Escape/Tab close, typing jumps to a match.
+ */
+export function Select({ label, value, onChange, options, className }) {
+  const id = useId();
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(() => Math.max(0, options.indexOf(value)));
+  const rootRef = useRef(null);
+  const buttonRef = useRef(null);
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e) => !rootRef.current?.contains(e.target) && setOpen(false);
+    document.addEventListener("pointerdown", onDown);
+    return () => document.removeEventListener("pointerdown", onDown);
+  }, [open]);
+
+  useEffect(() => {
+    if (open) listRef.current?.children[active]?.scrollIntoView({ block: "nearest" });
+  }, [open, active]);
+
+  const show = () => {
+    setActive(Math.max(0, options.indexOf(value)));
+    setOpen(true);
+  };
+  const pick = (i) => {
+    onChange(options[i]);
+    setOpen(false);
+    buttonRef.current?.focus();
+  };
+
+  const onKeyDown = (e) => {
+    const last = options.length - 1;
+    const move = { ArrowDown: Math.min(active + 1, last), ArrowUp: Math.max(active - 1, 0), Home: 0, End: last }[e.key];
+    if (move !== undefined) {
+      e.preventDefault();
+      if (!open) return show();
+      setActive(move);
+    } else if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      open ? pick(active) : show();
+    } else if (e.key === "Escape" && open) {
+      e.preventDefault();
+      setOpen(false);
+    } else if (e.key === "Tab") {
+      setOpen(false);
+    } else if (e.key.length === 1) {
+      const i = options.findIndex((o) => o.startsWith(e.key));
+      if (i >= 0) open ? setActive(i) : onChange(options[i]);
+    }
+  };
+
+  return (
+    <div className={cx(fieldLabel, "relative")} ref={rootRef}>
+      <span id={`${id}-label`}>{label}</span>
+      <button
+        ref={buttonRef}
+        type="button"
+        role="combobox"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={`${id}-list`}
+        aria-labelledby={`${id}-label`}
+        aria-activedescendant={open ? `${id}-${active}` : undefined}
+        onClick={() => (open ? setOpen(false) : show())}
+        onKeyDown={onKeyDown}
+        className={cx(fieldInput, "flex cursor-pointer items-center justify-between gap-2 text-start", open && "border-green ring-3 ring-green/20", className)}
+      >
+        <span className="truncate">{value}</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" className={cx("shrink-0 text-muted transition-transform", open && "rotate-180")}>
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+      <ul
+        ref={listRef}
+        id={`${id}-list`}
+        role="listbox"
+        aria-labelledby={`${id}-label`}
+        hidden={!open}
+        className="absolute inset-x-0 top-full z-20 mt-1.5 max-h-64 animate-row-in overflow-auto rounded-brand-xs border border-line bg-white p-1.5 font-normal shadow-hover"
+      >
+        {options.map((o, i) => (
+          <li
+            key={o}
+            id={`${id}-${i}`}
+            role="option"
+            aria-selected={o === value}
+            onPointerEnter={() => setActive(i)}
+            onClick={() => pick(i)}
+            className={cx(
+              "flex cursor-pointer items-center justify-between rounded-[10px] px-3 py-2.5 text-sm text-ink",
+              i === active && "bg-mint-soft",
+              o === value && "font-bold text-green-dark"
+            )}
+          >
+            {o}
+            {o === value && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
+                <path d="m5 12 5 5 9-10" />
+              </svg>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 /** The saved brand summary shown on the home, ideas and checker pages. */
 export function BrandBar({ brand, action, status = "الهوية المحفوظة", className }) {

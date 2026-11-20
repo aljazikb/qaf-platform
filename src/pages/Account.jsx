@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useApp } from "../AppContext.js";
 import PageHero from "../components/PageHero.jsx";
 import { KEYS, read } from "../lib/storage.js";
-import { Band, BrandBar, Button, Eyebrow, Note, Panel, cx, fieldInput, fieldLabel } from "../components/ui.jsx";
+import { Band, BrandBar, Button, Eyebrow, Note, Panel, Select, cx, fieldInput, fieldLabel } from "../components/ui.jsx";
 import { SECTORS } from "./Auth.jsx";
 
 const MAX_LOGO_BYTES = 400 * 1024;
@@ -150,14 +150,7 @@ export default function Account() {
                   <input className={fieldInput} required={req} maxLength={80} placeholder={ph} value={form[key]} onChange={set(key)} />
                 </label>
               ))}
-              <label className={fieldLabel}>
-                القطاع
-                <select className={fieldInput} value={form.sector} onChange={set("sector")}>
-                  {SECTORS.map((s) => (
-                    <option key={s}>{s}</option>
-                  ))}
-                </select>
-              </label>
+              <Select label="القطاع" options={SECTORS} value={form.sector} onChange={(sector) => setForm({ ...form, sector })} />
               {TEXT_FIELDS.slice(1).map(([key, label, ph, req]) => (
                 <label key={key} className={cx(fieldLabel, key === "description" && "sm:col-span-2")}>
                   {label}
