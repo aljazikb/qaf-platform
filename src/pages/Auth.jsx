@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useApp } from "../AppContext.js";
-import BrandWaves from "../components/BrandWaves.jsx";
 import { Band, Button, Eyebrow, cx, fieldInput, fieldLabel } from "../components/ui.jsx";
 
 export const SECTORS = ["عطور وتجميل", "أزياء وإكسسوارات", "أغذية ومشروبات", "ضيافة وسياحة", "تجزئة", "تقنية", "فعاليات وترفيه", "أخرى"];
@@ -65,18 +64,17 @@ export default function Auth({ next }) {
   return (
     <Band className="-mt-[88px] bg-[#fbf6ec]" inner="grid min-h-svh place-items-center pt-[calc(88px+32px)] pb-[clamp(72px,9vw,112px)]">
       <div className="grid w-full max-w-[1040px] overflow-hidden rounded-brand-sm border border-line bg-white shadow-card sm:rounded-brand md:grid-cols-[.9fr_1.1fr]">
-        {/* Brand side */}
-        <div className="relative hidden min-h-[560px] flex-col justify-between overflow-hidden border-s border-line bg-white p-10 text-navy md:flex">
-          <img src="assets/images/qaf-logo.svg" alt="" className="w-32 animate-piece-float" />
-          <div className="relative z-1 mb-24">
+        {/* Brand side: logo and tagline centred */}
+        <div className="hidden min-h-[560px] flex-col items-center justify-center gap-8 border-s border-line bg-white p-10 text-center text-navy md:flex">
+          <img src="assets/images/qaf-logo.svg" alt="" className="w-40 animate-piece-float" />
+          <div>
             <p className="text-[clamp(28px,3vw,38px)] leading-[1.3] font-bold">
               هويتان، وبينهما <span className="text-terracotta">قاف</span>.
             </p>
-            <p className="mt-3 max-w-[34ch] leading-[1.9] text-muted">
+            <p className="mx-auto mt-3 max-w-[34ch] leading-[1.9] text-muted">
               أضف هوية علامتك مرة وحدة، واكتشف ما يجمعها بالثقافة السعودية في كل حملة.
             </p>
           </div>
-          <BrandWaves className="absolute inset-x-0 bottom-0 h-32 w-full" />
         </div>
 
         {/* Form side */}
