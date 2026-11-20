@@ -9,6 +9,9 @@ export const LINKS = [
   ["calendar", "التقويم الذكي"],
 ];
 
+/** The tools need an account, so visitors who aren't signed in only see the home link. */
+export const visibleLinks = (signedIn) => (signedIn ? LINKS : LINKS.slice(0, 1));
+
 const linkClass = (active) =>
   cx(
     "block rounded-brand-xs px-3.5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-mint-soft",
@@ -17,7 +20,7 @@ const linkClass = (active) =>
 
 /** The full-colour logo (transparent PNG). */
 export function LogoTile({ className }) {
-  return <img src="assets/images/qaf-logo.png" alt="" className={cx("block h-12 w-auto", className)} />;
+  return <img src="assets/images/qaf-logo.svg" alt="" className={cx("block h-12 w-auto", className)} />;
 }
 
 export default function Header() {
@@ -73,7 +76,7 @@ export default function Header() {
           </a>
           <nav className="hidden flex-1 md:block" aria-label="التنقل الرئيسي">
             <ul className="flex justify-center gap-1">
-              {LINKS.map(([id, label]) => (
+              {visibleLinks(signedIn).map(([id, label]) => (
                 <li key={id}>
                   <a href={`#/${id}`} aria-current={page === id ? "page" : undefined} className={linkClass(page === id)}>
                     {label}
@@ -146,7 +149,7 @@ export default function Header() {
           </button>
         </div>
         <nav id="mobile-nav" aria-label="القائمة للجوال" hidden={!open} className="border-t border-line px-[clamp(14px,3vw,28px)] pt-2 pb-4 md:hidden">
-          {LINKS.map(([id, label]) => (
+          {visibleLinks(signedIn).map(([id, label]) => (
             <a key={id} href={`#/${id}`} aria-current={page === id ? "page" : undefined} className={cx(linkClass(page === id), "py-3")}>
               {label}
             </a>

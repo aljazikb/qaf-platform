@@ -27,6 +27,9 @@ export default function BottomNav() {
 
   const show = !headerVisible && !footerVisible;
 
+  // Signed out there is only the home link, so the quick nav adds nothing.
+  if (!signedIn) return null;
+
   // Form pages (account, sign-in, and the sign-in screen that stands in for a tool) keep the screen clear for typing.
   const onForm = ["account", "login", "signup"].includes(page) || (!signedIn && ["ideas", "checker", "calendar"].includes(page));
   if (onForm) return null;

@@ -97,7 +97,7 @@ export default function VisionPillars() {
               )}
             >
               <span className={cx("grid size-[52px] place-items-center rounded-brand-xs", p.tint)}>
-                <img src={`assets/images/logo-parts/crop/${p.piece}.png`} alt="" className="h-[34px] w-auto" />
+                <img src={`assets/images/logo-parts/crop/${p.piece}.svg`} alt="" className="h-[34px] w-auto" />
               </span>
               <span className="min-w-0">
                 <span className="block text-base font-bold text-navy">{p.title}</span>
@@ -121,7 +121,7 @@ export default function VisionPillars() {
           return (
             <img
               key={l.piece}
-              src={`assets/images/logo-parts/${l.piece}.png`}
+              src={`assets/images/logo-parts/${l.piece}.svg`}
               alt=""
               className={cx(
                 "absolute inset-0 size-full transition duration-500 ease-out-soft",

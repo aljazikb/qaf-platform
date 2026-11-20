@@ -67,7 +67,7 @@ export default function Auth({ next }) {
       <div className="grid w-full max-w-[1040px] overflow-hidden rounded-brand-sm border border-line bg-white shadow-card sm:rounded-brand md:grid-cols-[.9fr_1.1fr]">
         {/* Brand side */}
         <div className="relative hidden min-h-[560px] flex-col justify-between overflow-hidden border-s border-line bg-white p-10 text-navy md:flex">
-          <img src="assets/images/qaf-logo.png" alt="" className="w-32 animate-piece-float" />
+          <img src="assets/images/qaf-logo.svg" alt="" className="w-32 animate-piece-float" />
           <div className="relative z-1 mb-24">
             <p className="text-[clamp(28px,3vw,38px)] leading-[1.3] font-bold">
               هويتان، وبينهما <span className="text-terracotta">قاف</span>.

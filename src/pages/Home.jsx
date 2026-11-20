@@ -38,9 +38,9 @@ export default function Home() {
         aria-labelledby="hero-title"
         className="-mt-[88px] overflow-hidden bg-[#faf6ee] bg-cover bg-[center_30%]"
         style={{
-          // Riyadh skyline; a cream wash over the sky keeps the headline readable while the city shows below
+          // Heritage village at sunset; a cream wash keeps the headline readable while the scene shows around it
           backgroundImage:
-            "radial-gradient(ellipse 60% 70% at 50% 45%, rgba(250,246,238,.92) 0%, rgba(250,246,238,.7) 55%, rgba(250,246,238,0) 100%), url(assets/images/qaf-hero-riyadh-light.jpg)",
+            "radial-gradient(ellipse 60% 70% at 50% 45%, rgba(250,246,238,.92) 0%, rgba(250,246,238,.7) 55%, rgba(250,246,238,0) 100%), url(assets/images/qaf-hero-heritage.jpg)",
         }}
         inner="grid w-full justify-items-center pt-[calc(88px+clamp(40px,6vw,72px))] pb-[clamp(72px,8vw,110px)] text-center"
         edge={<WaveDivider from="transparent" to="#ffffff" className="absolute inset-x-0 bottom-0" />}

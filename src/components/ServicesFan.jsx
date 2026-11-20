@@ -101,7 +101,7 @@ export default function ServicesFan() {
             >
               <div className={cx("grid h-(--img-h) place-items-center", s.tint)}>
                 <img
-                  src={`assets/images/logo-parts/crop/${s.piece}.png`}
+                  src={`assets/images/logo-parts/crop/${s.piece}.svg`}
                   alt=""
                   className={cx("h-[calc(var(--img-h)*.7)] w-auto transition duration-500 ease-out-soft", isFront && "-rotate-6 scale-[1.08]")}
                 />

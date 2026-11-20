@@ -64,7 +64,7 @@ function ScanDemo() {
     <div aria-hidden="true" className="flex items-center gap-4">
       <div className="relative h-[92px] w-[132px] overflow-hidden rounded-brand-sm border border-white bg-white shadow-card">
         <div className="grid h-[58px] place-items-center bg-[#fde3db]">
-          <img src="assets/images/logo-parts/crop/house.png" alt="" className="h-10 w-auto" />
+          <img src="assets/images/logo-parts/crop/house.svg" alt="" className="h-10 w-auto" />
         </div>
         <div className="space-y-1.5 px-3 pt-2">
           <i className="block h-1.5 w-3/4 rounded-full bg-line" />

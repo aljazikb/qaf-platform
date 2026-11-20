@@ -56,7 +56,7 @@ export default function Intro() {
           {PIECES.map((p) => (
             <img
               key={p.name}
-              src={`assets/images/logo-parts/${p.name}.png`}
+              src={`assets/images/logo-parts/${p.name}.svg`}
               alt=""
               onLoad={onLoad}
               onError={close}
@@ -65,7 +65,7 @@ export default function Intro() {
             />
           ))}
           <img
-            src="assets/images/logo-parts/dots.png"
+            src="assets/images/logo-parts/dots.svg"
             alt=""
             onLoad={onLoad}
             onError={close}
