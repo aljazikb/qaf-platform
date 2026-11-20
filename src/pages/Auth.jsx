@@ -62,7 +62,7 @@ export default function Auth({ next }) {
   const isSignup = mode === "signup";
 
   return (
-    <Band className="-mt-[88px] bg-[#fbf6ec]" inner="grid min-h-svh place-items-center pt-[calc(88px+32px)] pb-[clamp(72px,9vw,112px)]">
+    <Band className="-mt-[88px] bg-[#fbf6ec]" inner="grid place-items-center pt-[calc(88px+24px)] pb-[clamp(72px,9vw,112px)] md:min-h-svh md:pt-[calc(88px+32px)]">
       <div className="grid w-full max-w-[1040px] rounded-brand-sm border border-line bg-white shadow-card sm:rounded-brand md:grid-cols-[.9fr_1.1fr]">
         {/* Brand side: logo and tagline centred */}
         <div className="hidden min-h-[560px] flex-col items-center justify-center gap-8 border-s border-line bg-white p-10 text-center text-navy md:flex">

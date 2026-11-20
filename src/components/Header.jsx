@@ -134,44 +134,47 @@ export default function Header() {
               </>
             )}
           </div>
-          <button
-            ref={buttonRef}
-            type="button"
-            className="ms-auto grid size-[42px] cursor-pointer place-items-center rounded-brand-xs border border-line text-navy transition-colors hover:border-green hover:bg-mint md:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
-            onClick={() => setOpen((o) => !o)}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
-          </button>
+          {signedIn ? (
+            <button
+              ref={buttonRef}
+              type="button"
+              className="ms-auto grid size-[42px] cursor-pointer place-items-center rounded-brand-xs border border-line text-navy transition-colors hover:border-green hover:bg-mint md:hidden"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
+              onClick={() => setOpen((o) => !o)}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            </button>
+          ) : (
+            // Visitors only have two actions, so show them directly instead of behind a menu.
+            <div className="ms-auto flex items-center gap-1 md:hidden">
+              <a href="#/login" className={cx(linkClass(page === "login"), "px-2.5 text-[13px] whitespace-nowrap")}>تسجيل الدخول</a>
+              <a href="#/signup" className="rounded-brand-xs bg-green px-3 py-2.5 text-[13px] font-bold whitespace-nowrap text-white transition-colors hover:bg-green-dark">
+                إنشاء حساب
+              </a>
+            </div>
+          )}
         </div>
-        <nav id="mobile-nav" aria-label="القائمة للجوال" hidden={!open} className="border-t border-line px-[clamp(14px,3vw,28px)] pt-2 pb-4 md:hidden">
-          {visibleLinks(signedIn).map(([id, label]) => (
-            <a key={id} href={`#/${id}`} aria-current={page === id ? "page" : undefined} className={cx(linkClass(page === id), "py-3")}>
-              {label}
-            </a>
-          ))}
-          <div className={cx(signedIn && "mt-2 border-t border-line pt-2")}>
-            {signedIn ? (
-              <>
-                <a href="#/account" aria-current={page === "account" ? "page" : undefined} className={cx(linkClass(page === "account"), "py-3")}>
-                  حسابي · {account?.name}
-                </a>
-                <button type="button" onClick={signOut} className={cx(linkClass(false), "w-full cursor-pointer py-3 text-start text-terracotta")}>
-                  تسجيل الخروج
-                </button>
-              </>
-            ) : (
-              <>
-                <a href="#/login" className={cx(linkClass(page === "login"), "py-3")}>تسجيل الدخول</a>
-                <a href="#/signup" className={cx(linkClass(page === "signup"), "py-3")}>إنشاء حساب</a>
-              </>
-            )}
-          </div>
-        </nav>
+        {signedIn && (
+          <nav id="mobile-nav" aria-label="القائمة للجوال" hidden={!open} className="border-t border-line px-[clamp(14px,3vw,28px)] pt-2 pb-4 md:hidden">
+            {visibleLinks(signedIn).map(([id, label]) => (
+              <a key={id} href={`#/${id}`} aria-current={page === id ? "page" : undefined} className={cx(linkClass(page === id), "py-3")}>
+                {label}
+              </a>
+            ))}
+            <div className="mt-2 border-t border-line pt-2">
+              <a href="#/account" aria-current={page === "account" ? "page" : undefined} className={cx(linkClass(page === "account"), "py-3")}>
+                حسابي · {account?.name}
+              </a>
+              <button type="button" onClick={signOut} className={cx(linkClass(false), "w-full cursor-pointer py-3 text-start text-terracotta")}>
+                تسجيل الخروج
+              </button>
+            </div>
+          </nav>
+        )}
       </div>
     </header>
   );
