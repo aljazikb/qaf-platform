@@ -9,7 +9,7 @@ const column = "mx-auto max-w-[1270px] px-[clamp(16px,4vw,32px)]";
 export default function Footer() {
   const { signedIn } = useApp();
   // Visitors get home plus the way in; signed-in users get the tools.
-  const links = signedIn ? visibleLinks(true) : [...visibleLinks(false), ["login", "تسجيل الدخول"], ["signup", "إنشاء حساب"]];
+  const links = signedIn ? visibleLinks(true) : [["home", "الرئيسية"], ["login", "تسجيل الدخول"], ["signup", "إنشاء حساب"]];
   return (
     <footer id="site-footer" className="relative -mt-[clamp(36px,5vw,72px)] text-white print:hidden">
       <WaveDivider from="transparent" to="var(--color-green)" flip />

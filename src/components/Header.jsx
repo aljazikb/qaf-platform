@@ -9,8 +9,8 @@ export const LINKS = [
   ["calendar", "التقويم الذكي"],
 ];
 
-/** The tools need an account, so visitors who aren't signed in only see the home link. */
-export const visibleLinks = (signedIn) => (signedIn ? LINKS : LINKS.slice(0, 1));
+/** The tools need an account; visitors who aren't signed in get no page links (the logo already goes home). */
+export const visibleLinks = (signedIn) => (signedIn ? LINKS : []);
 
 const linkClass = (active) =>
   cx(
@@ -154,7 +154,7 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <div className="mt-2 border-t border-line pt-2">
+          <div className={cx(signedIn && "mt-2 border-t border-line pt-2")}>
             {signedIn ? (
               <>
                 <a href="#/account" aria-current={page === "account" ? "page" : undefined} className={cx(linkClass(page === "account"), "py-3")}>
