@@ -17,7 +17,7 @@ export default function Footer() {
         <div className={`${column} relative z-1 grid gap-8 pt-6 pb-8 md:grid-cols-[1.4fr_1fr]`}>
           <div>
             <LogoTile className="h-14" />
-            <p className="mt-4 text-xl font-bold">هويتان، وبينهما قاف.</p>
+            <p className="mt-4 text-xl font-bold">هويتان، وبينهما قاف</p>
             <p className="mt-1.5 max-w-[46ch] text-sm leading-[1.9]">
               أضف هوية علامتك، واكتشف ما يجمعها بالثقافة السعودية، بأفكار مبتكرة ومستدامة طوال العام.
             </p>

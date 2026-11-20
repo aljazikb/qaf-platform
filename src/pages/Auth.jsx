@@ -68,7 +68,7 @@ export default function Auth({ next }) {
         <div className="hidden min-h-[560px] flex-col items-center justify-center gap-8 border-s border-line bg-white p-10 text-center text-navy md:flex">
           <img src="assets/images/qaf-logo.svg" alt="" className="w-40 animate-piece-float" />
           <p className="text-[clamp(28px,3vw,38px)] leading-[1.3] font-bold">
-            هويتان، وبينهما <span className="text-terracotta">قاف</span>.
+            هويتان، وبينهما <span className="text-terracotta">قاف</span>
           </p>
         </div>
 
